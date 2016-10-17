@@ -1,0 +1,35 @@
+{
+  "paths" : {
+    "scripts": {
+      "source" : {
+        "root": "src/scripts/",
+        "files" : "src/scripts/**/*.js"
+      },
+      "vendor" : {
+        "requirejs": "node_modules/requirejs/require.js",
+        "jquery": "node_modules/jquery/dist/jquery.min.js"
+      },
+      "dist" : {
+        "bundle" : "dist/scripts/bundle.min.js",
+        "transpiled": {
+          "root" : "dist/scripts/transpiled/",
+          "files" : "dist/scripts/transpiled/**/*.js"
+        },
+        "vendor": {
+          "requirejs": "dist/vendor/scripts/require.min.js",
+          "jquery": "dist/vendor/scripts/jquery.min.js"
+        }
+      }
+    },
+    "styles": {
+      "source" : {
+        "files" : "src/styles/**/*.styl"
+      },
+      "vendor" : {},
+      "dist" : {
+        "bundle" : "dist/styles/bundle.min.css",
+        "vendor": {}
+      }
+    }
+  }
+}
