@@ -1,4 +1,4 @@
-const VENDORS_PATH = '/dist/vendor/scripts/';
+var VENDORS_PATH = '/dist/vendor/scripts/';
 
 function init() {
   require.config({

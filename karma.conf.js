@@ -1,5 +1,5 @@
-// Karma configuration
-// Generated on Mon Jun 08 2015 11:54:05 GMT-0300 (E. South America Standard Time)
+var fs = require('fs');
+var project = JSON.parse(fs.readFileSync('./project.json', 'utf8'));
 
 module.exports = function(config) {
 
@@ -8,7 +8,6 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine-jquery', 'jasmine', 'requirejs'],
@@ -16,17 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns indexOf to load in the browser
     files: [
-      {pattern: 'assets/js/libs/**/*.js', included: false},
-      {pattern: 'src/js/**/*.js', included: false},
-      {pattern: 'spec/**/*Spec.js', included: false},
-      'assets/css/app.min.css',
-      'spec/main.js',
+      {pattern: 'node_modules/requirejs/require.js', included: true},
+      {pattern: 'src/scripts/**/*.js', included: false},
+      {pattern: 'spec/**/*-spec.js', included: false},
+      'spec/main.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'src/modules/main.js'
+      'src/scripts/config.js'
     ],
 
     plugins: [
@@ -34,31 +32,39 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-requirejs',
       'karma-phantomjs-launcher',
-      'karma-chrome-launcher',
-      'karma-coverage'
+      'karma-babel-preprocessor'
+      // 'karma-chrome-launcher'
+      //'karma-coverage'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'src/**/*.js' : 'coverage'
+        './src/scripts/**/*.js': ['babel'],
+        './spec/**/*-spec.js': ['babel']
+    },
+
+    babelPreprocessor: {
+      options: {
+        babelrc: ".babelrc"
+      }
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    // reporters: ['progress', 'coverage'],
 
 
-    coverageReporter: {
-        dir : 'coverage/',
-        reporters: [
-            { type: 'html', subdir: 'report-html' },
-            { type: 'text', subdir: '.' }
-        ]
+    // coverageReporter: {
+    //     dir : 'coverage/',
+    //     reporters: [
+    //         { type: 'html', subdir: 'report-html' },
+    //         { type: 'text', subdir: '.' }
+    //     ]
 
-    },
+    // },
 
 
     // web server port
@@ -89,7 +95,6 @@ module.exports = function(config) {
       'PhantomJS'
       //'Chrome'
     ],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

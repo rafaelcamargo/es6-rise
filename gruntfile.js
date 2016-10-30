@@ -29,13 +29,11 @@ module.exports = function(grunt) {
 
     babel: {
       options: {
-        sourceMap: 'inline',
+        babelrc: ".babelrc",
         moduleIds: true,
         getModuleId: function(moduleName){
           return moduleName.replace(project.paths.scripts.source.root,'');
-        },
-        presets: ['es2015'],
-        plugins: ['transform-es2015-modules-amd']
+        }
       },
       compile: {
         files: [
@@ -47,6 +45,12 @@ module.exports = function(grunt) {
             dest: project.paths.scripts.dist.transpiled.root
           }
         ]
+      }
+    },
+
+    karma: {
+      unit: {
+        configFile: project.paths.scripts.spec.config
       }
     },
 
