@@ -15,16 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns indexOf to load in the browser
     files: [
-      {pattern: 'node_modules/requirejs/require.js', included: true},
-      {pattern: 'src/scripts/**/*.js', included: false},
-      {pattern: 'spec/**/*-spec.js', included: false},
-      'spec/main.js'
+      {pattern: project.paths.scripts.vendor.requirejs, included: true},
+      {pattern: project.paths.scripts.source.files, included: false},
+      {pattern: project.paths.scripts.spec.files, included: false},
+      {pattern: project.paths.scripts.spec.main, included: true}
     ],
 
 
     // list of files to exclude
     exclude: [
-      'src/scripts/config.js'
+      project.paths.scripts.source.main
     ],
 
     plugins: [
@@ -41,13 +41,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './src/scripts/**/*.js': ['babel'],
-        './spec/**/*-spec.js': ['babel']
+      [project.paths.scripts.source.files]: ['babel'],
+      [project.paths.scripts.spec.files]: ['babel']
     },
 
     babelPreprocessor: {
       options: {
-        babelrc: ".babelrc"
+        babelrc: project.paths.transpiler.config
       }
     },
 

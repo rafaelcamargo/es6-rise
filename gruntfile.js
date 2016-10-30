@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
     babel: {
       options: {
-        babelrc: ".babelrc",
+        babelrc: project.paths.transpiler.config,
         moduleIds: true,
         getModuleId: function(moduleName){
           return moduleName.replace(project.paths.scripts.source.root,'');

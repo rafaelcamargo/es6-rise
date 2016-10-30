@@ -3,11 +3,13 @@
     "scripts": {
       "source" : {
         "root": "src/scripts/",
-        "files" : "src/scripts/**/*.js"
+        "files" : "src/scripts/**/*.js",
+        "main": "src/scripts/config.js"
       },
       "spec": {
         "root": "spec/",
-        "files": "spec/**/*.js",
+        "files": "spec/**/*-spec.js",
+        "main": "spec/main.js",
         "config": "karma.conf.js"
       },
       "vendor" : {
@@ -36,6 +38,9 @@
         "bundle" : "dist/styles/bundle.min.css",
         "vendor": {}
       }
+    },
+    "transpiler": {
+      "config": ".babelrc"
     }
   }
 }
