@@ -4,7 +4,8 @@
       "source" : {
         "root": "src/scripts/",
         "files" : "src/scripts/**/*.js",
-        "main": "src/scripts/config.js"
+        "main": "src/scripts/main.js",
+        "boot": "src/scripts/boot.js"
       },
       "spec": {
         "root": "spec/",

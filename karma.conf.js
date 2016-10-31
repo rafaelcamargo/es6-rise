@@ -24,7 +24,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      project.paths.scripts.source.main
+      project.paths.scripts.source.main,
+      project.paths.scripts.source.boot
     ],
 
     plugins: [

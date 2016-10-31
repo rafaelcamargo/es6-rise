@@ -1,7 +1,9 @@
+var fs = require('fs');
+var project = JSON.parse(fs.readFileSync('./project.json', 'utf8'));
+
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
-  var project = grunt.file.readJSON('./project.json');
 
   grunt.initConfig({
 
@@ -22,7 +24,11 @@ module.exports = function(grunt) {
         sourceMap: true
       },
       scripts: {
-        src: [project.paths.scripts.dist.transpiled.files],
+        src: [
+          project.paths.scripts.source.main,
+          project.paths.scripts.dist.transpiled.files,
+          project.paths.scripts.source.boot
+        ],
         dest: project.paths.scripts.dist.bundle
       }
     },
@@ -41,7 +47,11 @@ module.exports = function(grunt) {
             expand: true,
             flatten: true,
             cwd: project.paths.scripts.source.root,
-            src: ['**/*.js'],
+            src: [
+              '**/*.js',
+              '!' + project.paths.scripts.source.main,
+              '!' + project.paths.scripts.source.boot
+            ],
             dest: project.paths.scripts.dist.transpiled.root
           }
         ]
