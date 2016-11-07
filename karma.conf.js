@@ -33,9 +33,8 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-requirejs',
       'karma-phantomjs-launcher',
-      'karma-babel-preprocessor'
-      // 'karma-chrome-launcher'
-      //'karma-coverage'
+      'karma-babel-preprocessor',
+      'karma-coverage'
     ],
 
 
@@ -55,17 +54,16 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    // reporters: ['progress', 'coverage'],
+    reporters: ['progress', 'coverage'],
 
 
-    // coverageReporter: {
-    //     dir : 'coverage/',
-    //     reporters: [
-    //         { type: 'html', subdir: 'report-html' },
-    //         { type: 'text', subdir: '.' }
-    //     ]
-
-    // },
+    coverageReporter: {
+      dir : 'coverage/',
+      reporters: [
+          { type: 'html', subdir: 'report-html' },
+          { type: 'text', subdir: '.' }
+      ]
+    },
 
 
     // web server port
